@@ -3,45 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#10110f" />
-
-  <title>ORIVANT — Intelligent Intake Infrastructure</title>
-
   <meta
     name="description"
-    content="Turn missed inquiries into a better first conversation. ORIVANT builds managed AI intake systems that answer approved questions, qualify leads, and connect with your CRM and calendar."
+    content="Afterly installs and manages website intake systems that answer approved questions, capture leads, and help customers book into your existing calendar."
   />
+  <meta name="theme-color" content="#edf2fa" />
+  <title>Afterly — Your next client shouldn’t have to wait.</title>
 
-  <meta property="og:title" content="ORIVANT — Intelligent Intake Infrastructure" />
-  <meta
-    property="og:description"
-    content="Your expertise. A better first response. Managed AI intake for high-value service businesses."
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700;750;800&display=swap"
+    rel="stylesheet"
   />
-  <meta property="og:type" content="website" />
 
   <style>
-    /* -----------------------------------------
-       DESIGN SYSTEM
-    ----------------------------------------- */
-
     :root {
-      --bg: #10110f;
-      --surface: #171915;
-      --surface-2: #1d201a;
-      --text: #f1efe7;
-      --muted: #b4b7aa;
-      --subtle: #858b7b;
-      --line: rgba(239, 238, 222, 0.13);
-      --accent: #d6c7a3;
-      --accent-dark: #b4a17a;
-      --green: #c0d29f;
-      --radius: 16px;
-      --max-width: 1180px;
+      --ink: #181a20;
+      --muted: #777c87;
+      --orange: #ff6347;
+      --orange-dark: #e84930;
+      --blue: #3684fa;
+      --green: #22b885;
+      --border: rgba(255, 255, 255, .94);
+      --shadow: 0 12px 28px rgba(48, 56, 78, .08);
+      --radius: 28px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
@@ -50,2340 +39,1566 @@
 
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Inter, "Helvetica Neue", Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
+      color: var(--ink);
+      font-family: "Inter", sans-serif;
       -webkit-font-smoothing: antialiased;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
       background:
-        radial-gradient(
-          ellipse at 80% 8%,
-          rgba(167, 146, 95, 0.09),
-          transparent 40%
-        );
+        radial-gradient(ellipse at 12% 0%, #dce8fb 0, transparent 40%),
+        radial-gradient(ellipse at 95% 30%, #e9eff8 0, transparent 42%),
+        #f6f7f9;
     }
 
-    ::selection {
-      background: var(--accent);
-      color: var(--bg);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button,
-    input,
-    select {
-      font: inherit;
-    }
-
-    button,
-    a,
-    input,
-    select,
-    summary {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    button:disabled {
-      cursor: wait;
-      opacity: 0.65;
-    }
+    button, input, select { font: inherit; }
+    button, a, input, select { -webkit-tap-highlight-color: transparent; }
+    button { cursor: pointer; }
+    a { color: inherit; text-decoration: none; }
+    svg { display: block; }
+    button svg, a svg { flex-shrink: 0; }
+    ::selection { background: #ffdbd2; }
 
     :focus-visible {
-      outline: 2px solid var(--accent);
+      outline: 3px solid var(--blue);
       outline-offset: 5px;
     }
 
-    [hidden] {
-      display: none !important;
-    }
-
-    .container {
-      width: min(var(--max-width), calc(100% - 64px));
-      margin-inline: auto;
-    }
-
-    .mono,
-    .eyebrow,
-    .small-label {
-      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-    }
-
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 0 0 24px;
-      color: var(--accent);
-      text-transform: uppercase;
-      font-size: 11px;
-      letter-spacing: 2px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 24px;
-      height: 1px;
-      background: var(--accent);
-    }
-
-    .small-label {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1.4px;
-      color: var(--muted);
-    }
-
-    h1,
-    h2,
-    h3,
-    p {
-      margin-top: 0;
-    }
-
-    h1,
-    h2 {
-      font-weight: 450;
-      letter-spacing: -0.065em;
-      line-height: 1.05;
-    }
-
-    h1 {
-      font-size: clamp(56px, 6.5vw, 88px);
-      margin-bottom: 28px;
-    }
-
-    h2 {
-      font-size: clamp(38px, 4.5vw, 60px);
-      margin-bottom: 24px;
-    }
-
-    h3 {
-      font-size: 22px;
-      letter-spacing: -0.6px;
-      font-weight: 500;
-      line-height: 1.25;
-    }
-
-    .serif {
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: normal;
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .muted {
-      color: var(--muted);
-    }
-
-    .btn {
-      min-height: 48px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
-      padding: 14px 22px;
-      border: 1px solid transparent;
-      border-radius: 6px;
-      font-size: 13px;
-      font-weight: 600;
-      line-height: 1.35;
-      transition:
-        transform 180ms ease,
-        background 180ms ease,
-        border-color 180ms ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #181911;
-    }
-
-    .btn-primary:hover {
-      background: #e5d8b9;
-    }
-
-    .btn-outline {
-      border-color: var(--line);
-      background: transparent;
-      color: var(--text);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--accent-dark);
-      background: rgba(255, 255, 255, 0.025);
-    }
-
-    .arrow {
-      font-size: 18px;
-      font-weight: 400;
-    }
-
-    .section {
-      padding: 112px 0;
-      border-top: 1px solid var(--line);
-    }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 48px;
-      margin-bottom: 52px;
-    }
-
-    .section-head h2 {
-      margin-bottom: 0;
-    }
-
-    .section-head > p {
-      max-width: 350px;
-      margin-bottom: 4px;
-      color: var(--muted);
-      font-size: 15px;
-    }
+    .container { width: min(1120px, calc(100% - 48px)); margin: auto; }
 
     .skip-link {
-      position: fixed;
-      top: -100px;
-      left: 16px;
+      position: absolute;
+      left: 20px;
+      top: -80px;
+      background: white;
+      padding: 14px 20px;
       z-index: 100;
-      padding: 12px 18px;
-      background: var(--accent);
-      color: var(--bg);
-      border-radius: 5px;
+      border-radius: 12px;
     }
 
-    .skip-link:focus {
-      top: 12px;
-    }
+    .skip-link:focus { top: 15px; }
 
-    /* -----------------------------------------
-       NAVIGATION
-    ----------------------------------------- */
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      border-bottom: 1px solid var(--line);
-      background: rgba(16, 17, 15, 0.93);
-      backdrop-filter: blur(18px);
-    }
+    .site-header { padding: 24px 0; }
 
     .nav {
-      height: 82px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 32px;
+      align-items: center;
+      gap: 24px;
     }
 
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      font-size: 18px;
-      font-weight: 650;
-      letter-spacing: 4px;
+      gap: 10px;
+      font-size: 24px;
+      font-weight: 750;
+      letter-spacing: -1.2px;
     }
 
-    .brand-mark {
-      display: inline-grid;
-      place-items: center;
-      width: 30px;
-      height: 30px;
-      color: var(--accent);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .nav-links > a:not(.btn) {
-      font-size: 12px;
-      color: var(--muted);
-      transition: color 180ms ease;
-    }
-
-    .nav-links > a:hover {
-      color: var(--text);
-    }
-
-    .nav-links .btn {
-      min-height: 40px;
-      padding: 10px 15px;
-      font-size: 11px;
-    }
-
-    .menu-toggle {
-      display: none;
-      padding: 8px 12px;
-      border: 1px solid var(--line);
-      border-radius: 5px;
-      color: var(--text);
-      background: transparent;
-    }
-
-    /* -----------------------------------------
-       HERO
-    ----------------------------------------- */
-
-    .hero {
-      padding: 100px 0 62px;
-      overflow: hidden;
-    }
-
-    .hero-grid {
+    .brand-icon {
+      width: 33px;
+      height: 33px;
       display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 52px;
-      align-items: center;
+      place-items: center;
+      color: white;
+      border-radius: 11px;
+      background: linear-gradient(145deg, #ff8a6b, #f04a2c);
+      box-shadow: 0 4px 8px #ff634728, inset 0 1px 2px #ffffff85;
     }
 
-    .hero-copy > p:not(.eyebrow) {
-      max-width: 460px;
-      font-size: 16px;
-      line-height: 1.85;
-      color: var(--muted);
-      margin-bottom: 30px;
+    .brand-icon svg { width: 21px; height: 21px; }
+
+    .nav-links { display: flex; gap: 30px; }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: #646a76;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border: 1px solid transparent;
+      border-radius: 13px;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.3;
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+    .button:active { transform: translateY(0); }
+    .button svg { width: 16px; height: 16px; }
+
+    .button-dark {
+      background: #202127;
+      color: white;
+      box-shadow: 0 4px 8px #181a2010;
+    }
+
+    .button-dark:hover { background: #35363e; }
+
+    .button-orange {
+      background: linear-gradient(180deg, #ff7c5e, #ff5b3e);
+      color: white;
+      border-color: #ff6f52;
+      box-shadow: 0 5px 12px #ff63472b, inset 0 1px 1px #ffffff66;
+    }
+
+    .button-orange:hover { box-shadow: 0 8px 20px #ff634745; }
+
+    .button-white {
+      background: #ffffffc9;
+      border-color: white;
+      box-shadow: 0 3px 8px #323d5710;
+    }
+
+    .hero { text-align: center; padding: 69px 0 43px; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border: 1px solid white;
+      border-radius: 100px;
+      background: #ffffff94;
+      color: #666e7a;
+      font-size: 11px;
+      font-weight: 550;
+      box-shadow: 0 3px 9px #35436505;
+    }
+
+    .status-dot {
+      height: 6px;
+      width: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 3px #22b88512;
+      flex-shrink: 0;
+    }
+
+    h1 {
+      max-width: 800px;
+      margin: 23px auto 20px;
+      font-size: clamp(40px, 5.5vw, 68px);
+      line-height: 1.075;
+      font-weight: 550;
+      letter-spacing: -3.5px;
+    }
+
+    h1 span { color: #858d9c; }
+
+    .hero-copy {
+      max-width: 525px;
+      margin: auto;
+      color: #747b87;
+      font-size: 15px;
+      line-height: 1.8;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 26px;
     }
 
     .hero-note {
+      margin-top: 15px;
+      color: #838a95;
+      font-size: 11px;
+    }
+
+    .hero-note span { padding: 0 6px; color: #bec3cd; }
+
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .feature-card {
+      position: relative;
+      min-height: 335px;
+      padding: 25px 23px 24px;
+      border: 3px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 3px 0 #ffffff30;
+    }
+
+    .peach { background: linear-gradient(165deg, #fbe4df, #fff 87%); }
+    .lavender { background: linear-gradient(165deg, #e3ecfc, #fff 87%); }
+    .mint { background: linear-gradient(165deg, #def3e9, #fff 87%); }
+    .wide {
+      grid-column: span 2;
+      background: linear-gradient(165deg, #dce8ff, #fff 85%);
+    }
+
+    .visual {
+      height: 221px;
+      display: flex;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+    }
+
+    .feature-card h3 {
+      font-size: 14px;
+      font-weight: 650;
+      letter-spacing: -.4px;
+      margin: 8px 0 7px;
+    }
+
+    .feature-card p {
+      max-width: 420px;
+      margin: 0;
+      font-size: 11px;
+      line-height: 1.65;
+      color: #82848b;
+    }
+
+    .float-chip {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 13px;
+      border: 1px solid #ffffffed;
+      border-radius: 11px;
+      background: #ffffffef;
+      box-shadow: 0 7px 14px #6d49480c;
+      font-size: 10px;
+      white-space: nowrap;
+    }
+
+    .mini-icon {
+      width: 20px;
+      height: 20px;
+      display: grid;
+      place-items: center;
+      border-radius: 6px;
+      color: white;
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .orange-icon { background: #ff7053; }
+    .green-icon { background: #27bd8b; }
+    .blue-icon { background: #3989fb; }
+
+    .chip-top { top: 9px; transform: rotate(-3deg); }
+    .chip-left { top: 143px; left: -4px; transform: rotate(-12deg); }
+    .chip-right { top: 164px; right: -5px; transform: rotate(8deg); }
+
+    .orange-pill {
       display: flex;
       align-items: center;
       gap: 9px;
-      margin-top: 23px;
-      font-size: 11px;
-      color: var(--muted);
+      padding: 13px 20px;
+      border-radius: 100px;
+      color: white;
+      font-size: 12px;
+      background: linear-gradient(#ff9176, #ff5839);
+      border: 1px solid #ffb09d;
+      box-shadow: 0 6px 12px #ff62473b, inset 0 1px 3px #ffffff66;
+      transform: translateY(-6px);
     }
 
-    .dot {
-      width: 6px;
-      height: 6px;
-      flex-shrink: 0;
+    .sparkle { font-size: 19px; line-height: 1; }
+
+    .tiny-check {
+      color: #20b584;
+      background: #e7f8f0;
       border-radius: 50%;
-      background: var(--green);
+      padding: 2px 4px;
+      font-size: 9px;
     }
 
-    .engine {
+    .lead-stack { position: relative; width: 224px; margin-top: -5px; }
+
+    .lead-header {
+      width: 205px;
+      margin: 0 auto -4px;
+      padding: 13px 14px 16px;
+      border-radius: 13px 13px 0 0;
+      background: #ffffffc9;
+      color: #3482ef;
+      font-size: 11px;
+    }
+
+    .lead-header span { font-size: 17px; vertical-align: -1px; margin-right: 5px; }
+
+    .lead-card {
+      padding: 15px 14px;
       position: relative;
-      min-height: 480px;
+      border: 4px solid #f2f4f9;
+      border-radius: 17px;
+      background: #ffffffed;
+      box-shadow: 0 5px 5px #4b597318, 0 15px 20px #4b597308;
+    }
+
+    .micro-label {
       display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 20px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background:
-        radial-gradient(circle at 50% 30%, #333526 0%, #191c16 35%, #131510 72%);
-      overflow: hidden;
-      box-shadow: 0 30px 100px rgba(0, 0, 0, 0.25);
+      align-items: center;
+      gap: 5px;
+      font-size: 8px;
+      color: #858997;
+      font-weight: 500;
     }
 
-    .engine::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(214, 199, 163, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(214, 199, 163, 0.035) 1px, transparent 1px);
-      background-size: 30px 30px;
-      mask-image: linear-gradient(black, transparent);
-      pointer-events: none;
-    }
+    .micro-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--blue); }
 
-    .engine-top {
-      position: absolute;
-      top: 21px;
-      left: 22px;
-      right: 22px;
+    .lead-title { font-size: 12px; font-weight: 550; margin: 9px 0 8px; }
+
+    .lead-meta { font-size: 9px; color: #8a8d96; }
+
+    .lead-bottom {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      z-index: 2;
+      margin-top: 14px;
     }
 
-    .engine-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 9px;
-      color: var(--green);
-      letter-spacing: 1px;
-    }
-
-    .orb {
-      position: absolute;
-      top: 66px;
-      left: 50%;
-      width: 230px;
-      height: 230px;
-      transform: translateX(-50%);
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 35% 28%, #b8b48c 0%, #676d4b 24%, #262f20 54%, #0e140f 76%);
-      box-shadow:
-        inset -18px -20px 35px #070c08,
-        inset 5px 5px 25px rgba(241, 227, 176, 0.18),
-        0 0 70px rgba(161, 164, 106, 0.11);
-      animation: float 8s ease-in-out infinite;
-    }
-
-    .orb::before,
-    .orb::after {
-      content: "";
-      position: absolute;
-      inset: -20px;
-      border: 1px solid rgba(214, 199, 163, 0.24);
-      border-radius: 50%;
-    }
-
-    .orb::before {
-      transform: rotate(-32deg) scaleY(0.35);
-    }
-
-    .orb::after {
-      transform: rotate(50deg) scaleY(0.48);
-      inset: -34px;
-      border-color: rgba(214, 199, 163, 0.13);
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(-9px); }
-    }
-
-    .sample-panel {
-      position: relative;
-      z-index: 2;
-      border: 1px solid rgba(239, 238, 222, 0.16);
-      border-radius: 10px;
-      background: rgba(19, 22, 17, 0.92);
-      backdrop-filter: blur(12px);
-      padding: 18px;
-      margin-top: 266px;
-    }
-
-    .sample-panel-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 14px;
-    }
-
-    .sample-tag {
-      font-size: 9px;
-      color: var(--accent);
-    }
-
-    .chat-line {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-top: 12px;
-      font-size: 11px;
-      line-height: 1.65;
-      color: var(--muted);
-    }
-
-    .chat-line p {
-      margin: 0;
-    }
+    .avatar-group { display: flex; padding-left: 3px; }
 
     .avatar {
       display: grid;
       place-items: center;
-      width: 22px;
-      height: 22px;
-      border: 1px solid var(--line);
-      border-radius: 5px;
-      flex-shrink: 0;
-      font-size: 8px;
-      color: var(--accent);
+      width: 23px;
+      height: 23px;
+      margin-left: -4px;
+      border: 2px solid white;
+      border-radius: 50%;
+      font-size: 7px;
+      font-weight: 600;
+      color: #67534b;
+      background: #ead3c4;
     }
 
-    .sample-result {
-      margin-top: 16px;
-      padding: 9px 11px;
-      border: 1px solid rgba(192, 210, 159, 0.15);
-      border-radius: 5px;
-      background: rgba(192, 210, 159, 0.04);
-      color: var(--green);
-      font-size: 10px;
-    }
+    .avatar:nth-child(2) { background: #d4e8d9; color: #43614d; }
+    .avatar:nth-child(3) { background: #d5dff5; color: #4b5c81; }
 
-    .hero-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-      margin-top: 72px;
-      padding-top: 26px;
-      border-top: 1px solid var(--line);
-    }
+    .assigned { font-size: 8px; color: #6b7280; }
 
-    .industry-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px 26px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    /* -----------------------------------------
-       SERVICES
-    ----------------------------------------- */
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .card {
-      padding: 32px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      transition: border-color 220ms ease, transform 220ms ease;
-    }
-
-    .card:hover {
-      border-color: rgba(214, 199, 163, 0.35);
-      transform: translateY(-4px);
-    }
-
-    .card-number {
-      color: var(--accent);
-      font-size: 11px;
-      margin-bottom: 38px;
-    }
-
-    .card h3 {
-      margin-bottom: 16px;
-    }
-
-    .card p {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 24px;
-    }
-
-    .feature-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .feature-list li {
-      position: relative;
-      padding: 10px 0 10px 18px;
-      font-size: 12px;
-      color: var(--muted);
-      border-top: 1px solid var(--line);
-    }
-
-    .feature-list li::before {
-      content: "↗";
+    .cursor-label {
       position: absolute;
-      left: 0;
-      color: var(--accent);
+      z-index: 1;
+      right: -10px;
+      top: 14px;
+      color: white;
+      background: #3187ff;
+      border-radius: 9px;
+      padding: 5px 8px;
+      font-size: 8px;
+      box-shadow: 0 3px 7px #3187ff25;
+      transform: rotate(4deg);
     }
 
-    /* -----------------------------------------
-       ARCHITECTURE
-    ----------------------------------------- */
+    .cursor-label::before {
+      content: "";
+      position: absolute;
+      left: -10px;
+      top: -8px;
+      width: 0;
+      height: 0;
+      border-top: 13px solid #3187ff;
+      border-right: 9px solid transparent;
+      transform: rotate(-16deg);
+    }
 
-    .split {
+    .calendar {
+      width: 202px;
+      background: #ffffffeb;
+      border: 4px solid #ffffffba;
+      border-radius: 17px;
+      padding: 14px 11px 10px;
+      box-shadow: 0 7px 5px #44604f12, 0 16px 24px #44604f08;
+      transform: rotate(2deg);
+    }
+
+    .calendar-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 9px;
+      font-weight: 600;
+    }
+
+    .calendar-title span { font-size: 8px; font-weight: 400; color: #969b9b; }
+
+    .days {
+      display: flex;
+      justify-content: space-between;
+      margin: 17px 0;
+    }
+
+    .day {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 90px;
+      place-items: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      font-size: 8px;
+      color: #929b97;
+      background: #f8faf9;
+    }
+
+    .day.active {
+      background: #25bb89;
+      color: white;
+      box-shadow: 0 3px 5px #25bb8925;
+    }
+
+    .calendar-line {
+      display: flex;
+      justify-content: space-between;
+      margin: 12px 0;
+      font-size: 8px;
+      color: #838987;
+    }
+
+    .calendar-line strong { font-weight: 500; color: #535b57; }
+
+    .calendar-buttons { display: flex; gap: 7px; margin-top: 15px; }
+    .calendar-buttons span {
+      flex: 1;
+      text-align: center;
+      padding: 7px 4px;
+      border-radius: 100px;
+      font-size: 8px;
+      background: #f3f3f5;
+      color: #929299;
+    }
+
+    .calendar-buttons span:last-child { background: #1b1b21; color: white; }
+
+    .dashboard {
+      width: 100%;
+      max-width: 525px;
+      background: #ffffffeb;
+      border: 1px solid white;
+      border-radius: 17px;
+      padding: 16px;
+      box-shadow: 0 12px 22px #43567808;
+    }
+
+    .dashboard-top, .dashboard-brand, .dashboard-tabs, .pipeline {
+      display: flex;
       align-items: center;
     }
 
-    .split-copy > p:not(.eyebrow) {
-      color: var(--muted);
-      max-width: 470px;
-      font-size: 15px;
+    .dashboard-top { justify-content: space-between; gap: 10px; }
+    .dashboard-brand { gap: 7px; font-size: 11px; font-weight: 600; }
+    .dashboard-top .mini-icon { width: 23px; height: 23px; border-radius: 8px; }
+    .dashboard-right { display: flex; align-items: center; gap: 10px; }
+    .dashboard-right > span { font-size: 8px; color: #8a8d97; }
+
+    .dashboard-tabs {
+      gap: 20px;
+      padding: 18px 0 12px;
+      border-bottom: 1px solid #f1f2f5;
+      color: #a0a3ab;
+      font-size: 8px;
     }
 
-    .principle {
+    .dashboard-tabs .selected { color: #25262c; font-weight: 600; }
+
+    .dashboard-tabs .tag {
+      margin-left: auto;
+      color: white;
+      background: #ff7a5d;
+      border-radius: 6px;
+      padding: 5px 8px;
+      box-shadow: 0 3px 5px #ff634722;
+    }
+
+    .pipeline {
+      justify-content: space-between;
+      gap: 9px;
+      padding: 15px 0;
+      font-size: 8px;
+      color: #9699a3;
+    }
+
+    .pipeline span { display: inline-flex; align-items: center; gap: 5px; }
+    .pipeline i { width: 4px; height: 4px; background: #ffb279; border-radius: 50%; }
+    .pipeline span:nth-child(2) i { background: #93b8ff; }
+    .pipeline span:nth-child(3) i { background: #83d3b1; }
+    .pipeline b { font-weight: 500; color: #656b79; background: #f5f7fa; padding: 2px 4px; border-radius: 4px; }
+
+    .report-pill {
       display: flex;
-      gap: 18px;
-      padding: 18px 0;
-      border-top: 1px solid var(--line);
+      align-items: center;
+      gap: 9px;
+      max-width: 405px;
+      margin: 3px auto -4px;
+      padding: 6px 6px 6px 13px;
+      background: white;
+      border: 3px solid #f1f3f7;
+      border-radius: 100px;
+      box-shadow: 0 5px 9px #4c5b7515;
+      font-size: 9px;
+      font-weight: 550;
     }
 
-    .principle > span {
-      color: var(--accent);
-      font-size: 12px;
-      padding-top: 2px;
+    .report-pill .sparkle { color: #28bf95; font-size: 17px; }
+    .report-pill .report-button {
+      margin-left: auto;
+      padding: 10px 13px;
+      color: white;
+      background: linear-gradient(#61a4ff, #3185fa);
+      border-radius: 100px;
+      box-shadow: inset 0 1px 2px #ffffff85;
+      font-size: 8px;
+      font-weight: 400;
+      white-space: nowrap;
     }
 
-    .principle h3 {
-      font-size: 15px;
-      margin-bottom: 5px;
-      letter-spacing: 0;
+    .integration-orbit { position: relative; width: 232px; height: 208px; }
+
+    .orbit-ring {
+      position: absolute;
+      width: 144px;
+      height: 144px;
+      border: 1px dashed #e8dcd880;
+      border-radius: 50%;
+      left: 44px;
+      top: 30px;
     }
 
-    .principle p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 12px;
+    .app-icon {
+      position: absolute;
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      background: white;
+      border: 1px solid #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 5px 12px #9b666609;
+      font-size: 19px;
+      font-weight: 750;
     }
 
-    .flow {
-      padding: 28px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background:
-        radial-gradient(ellipse at top, rgba(214, 199, 163, 0.05), transparent 70%),
-        var(--surface);
+    .app-center {
+      width: 62px;
+      height: 62px;
+      left: 85px;
+      top: 73px;
+      color: white;
+      border-radius: 22px;
+      background: linear-gradient(145deg, #ff9576, #ed492b);
+      box-shadow: 0 9px 16px #ee593033, inset 0 1px 3px #ffffff80;
+      z-index: 2;
     }
 
-    .flow-head {
+    .app-center svg { width: 34px; height: 34px; }
+    .app-1 { left: 95px; top: 6px; color: #4285f4; }
+    .app-2 { left: 157px; top: 45px; color: #33ad85; }
+    .app-3 { left: 162px; top: 113px; color: #3985ee; }
+    .app-4 { left: 95px; top: 159px; color: #8057dc; }
+    .app-5 { left: 29px; top: 113px; color: #f4734b; }
+    .app-6 { left: 25px; top: 45px; color: #3184f5; }
+
+    .integration-note {
+      text-align: center;
+      font-size: 10px;
+      color: #9096a1;
+      margin: 17px 0 0;
+    }
+
+    .section { padding-top: 96px; }
+
+    .section-heading {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 30px;
+      align-items: flex-end;
+      gap: 30px;
+      margin-bottom: 27px;
     }
 
-    .flow-node {
-      padding: 20px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      text-align: center;
-      background: #141611;
+    .section-kicker {
+      color: #8c929d;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+      margin: 0 0 13px;
     }
 
-    .flow-node strong {
-      display: block;
-      font-size: 14px;
-      font-weight: 500;
-      margin-bottom: 4px;
+    h2 {
+      margin: 0;
+      font-size: clamp(27px, 3.8vw, 39px);
+      line-height: 1.15;
+      font-weight: 550;
+      letter-spacing: -1.6px;
     }
 
-    .flow-node span {
+    .section-heading > p {
+      max-width: 290px;
       color: var(--muted);
-      font-size: 11px;
-    }
-
-    .flow-node.highlight {
-      background: rgba(214, 199, 163, 0.06);
-      border-color: rgba(214, 199, 163, 0.4);
-    }
-
-    .flow-arrow {
-      padding: 9px;
-      color: var(--accent-dark);
-      text-align: center;
-      font-size: 18px;
-    }
-
-    .flow-end {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-    }
-
-    .flow-end .flow-node {
-      padding: 15px 6px;
-    }
-
-    .flow-end strong {
-      font-size: 11px;
+      font-size: 12px;
+      line-height: 1.8;
       margin: 0;
     }
-
-    .flow-caption {
-      margin: 20px 0 0;
-      text-align: center;
-      color: var(--subtle);
-      font-size: 10px;
-    }
-
-    /* -----------------------------------------
-       PROCESS
-    ----------------------------------------- */
 
     .steps {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 28px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
 
     .step {
-      padding-top: 24px;
-      border-top: 1px solid var(--line);
+      padding: 25px;
+      border: 1px solid white;
+      border-radius: 21px;
+      background: #ffffff8c;
     }
 
-    .step-index {
-      display: block;
-      margin-bottom: 28px;
-      color: var(--accent);
-      font-size: 11px;
-    }
-
-    .step h3 {
-      font-size: 19px;
-      margin-bottom: 12px;
-    }
-
-    .step p {
-      color: var(--muted);
-      font-size: 13px;
-      margin: 0;
-    }
-
-    /* -----------------------------------------
-       PRICING
-    ----------------------------------------- */
-
-    .pricing-layout {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .pricing-copy > p:not(.eyebrow) {
-      color: var(--muted);
-      max-width: 410px;
-      font-size: 15px;
-    }
-
-    .fit-note {
-      margin-top: 30px;
-      padding-left: 18px;
-      border-left: 1px solid var(--accent-dark);
-      color: var(--muted);
-      font-size: 12px;
-      max-width: 390px;
-    }
-
-    .price-card {
-      border: 1px solid rgba(214, 199, 163, 0.35);
-      border-radius: var(--radius);
-      padding: 36px;
-      background:
-        linear-gradient(145deg, rgba(214, 199, 163, 0.07), transparent),
-        var(--surface);
-    }
-
-    .price-card-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 26px;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      padding: 4px 9px;
-      border: 1px solid var(--line);
-      border-radius: 50px;
-      font-size: 9px;
-      color: var(--accent);
-    }
-
-    .price {
-      font-size: 52px;
-      line-height: 1.15;
-      letter-spacing: -3px;
-      margin: 0;
-    }
-
-    .price small {
-      font-size: 12px;
-      letter-spacing: 0;
-      color: var(--muted);
-    }
-
-    .monthly {
-      color: var(--muted);
-      font-size: 13px;
-      margin: 10px 0 28px;
-    }
-
-    .price-card .btn {
-      display: flex;
-      margin-top: 25px;
-    }
-
-    .price-disclaimer {
-      color: var(--subtle);
-      font-size: 10px;
-      margin: 15px 0 0;
-      line-height: 1.7;
-    }
-
-    /* -----------------------------------------
-       FAQ
-    ----------------------------------------- */
-
-    .faq-layout {
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 90px;
-    }
-
-    .faq details {
-      border-bottom: 1px solid var(--line);
-    }
-
-    .faq details:first-child {
-      border-top: 1px solid var(--line);
-    }
-
-    .faq summary {
-      position: relative;
-      list-style: none;
-      padding: 22px 34px 22px 0;
-      font-size: 15px;
-      cursor: pointer;
-    }
-
-    .faq summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .faq summary::after {
-      content: "+";
-      position: absolute;
-      right: 2px;
-      top: 20px;
-      color: var(--accent);
-      font-size: 22px;
-    }
-
-    .faq details[open] summary::after {
-      content: "−";
-    }
-
-    .faq details p {
-      padding-right: 28px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.85;
-      margin-bottom: 24px;
-    }
-
-    /* -----------------------------------------
-       REGISTRATION
-    ----------------------------------------- */
-
-    .contact-section {
-      background:
-        radial-gradient(ellipse at 10% 100%, rgba(214, 199, 163, 0.07), transparent 60%);
-    }
-
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .contact-copy > p:not(.eyebrow) {
-      color: var(--muted);
-      font-size: 15px;
-      max-width: 420px;
-    }
-
-    .call-agenda {
-      margin-top: 35px;
-    }
-
-    .agenda-item {
-      display: flex;
-      gap: 15px;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .agenda-item span:first-child {
-      color: var(--accent);
-      font-size: 10px;
-      padding-top: 3px;
-    }
-
-    .contact-note {
-      margin-top: 25px;
-      color: var(--subtle);
-      font-size: 11px;
-    }
-
-    .form-card {
-      padding: 32px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-    }
-
-    .form-heading {
-      font-size: 20px;
-      margin-bottom: 7px;
-    }
-
-    .form-intro {
-      color: var(--muted);
-      font-size: 12px;
-      margin-bottom: 26px;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px 16px;
-    }
-
-    .field.full {
-      grid-column: 1 / -1;
-    }
-
-    .field label {
-      display: block;
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .field input,
-    .field select {
-      width: 100%;
-      min-height: 46px;
-      padding: 11px 12px;
-      border: 1px solid var(--line);
-      border-radius: 5px;
-      background: #11140f;
-      color: var(--text);
-      font-size: 12px;
-      transition: border-color 180ms ease;
-      color-scheme: dark;
-    }
-
-    .field input:focus,
-    .field select:focus {
-      border-color: var(--accent-dark);
-    }
-
-    .field input::placeholder {
-      color: #777e6e;
-    }
-
-    .consent {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-top: 22px;
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.7;
-    }
-
-    .consent input {
-      margin-top: 4px;
-      accent-color: var(--accent);
-      flex-shrink: 0;
-    }
-
-    .text-button {
-      padding: 0;
-      border: 0;
-      background: transparent;
-      color: var(--accent);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      font: inherit;
-    }
-
-    .submit-btn {
-      width: 100%;
-      margin-top: 22px;
-    }
-
-    .form-status {
-      font-size: 12px;
-      margin: 14px 0 0;
-      color: var(--accent);
-    }
-
-    .form-status.error {
-      color: #edb4a7;
-    }
-
-    .form-footnote {
-      margin: 14px 0 0;
-      text-align: center;
-      font-size: 10px;
-      color: var(--subtle);
-    }
-
-    .success-panel {
-      padding: 24px 0;
-      text-align: center;
-    }
-
-    .success-icon {
-      width: 50px;
-      height: 50px;
+    .step-number {
       display: grid;
       place-items: center;
-      margin: 0 auto 20px;
-      border: 1px solid rgba(192, 210, 159, 0.35);
-      border-radius: 50%;
-      color: var(--green);
-      font-size: 22px;
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: #eef2f9;
+      color: #7c8ca6;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 25px;
     }
 
-    .success-panel h3 {
-      font-size: 25px;
+    .step:nth-child(2) .step-number { color: #cf816c; background: #fcece6; }
+    .step:nth-child(3) .step-number { color: #54a186; background: #e8f5ee; }
+    .step h3 { font-size: 14px; letter-spacing: -.3px; font-weight: 600; }
+    .step p { font-size: 12px; line-height: 1.85; color: var(--muted); margin-bottom: 0; }
+
+    .fit-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 50px;
+      margin-top: 30px;
+      padding: 35px;
+      background: #e9eff880;
+      border: 1px solid white;
+      border-radius: 22px;
     }
 
-    .success-panel p {
-      color: var(--muted);
-      font-size: 13px;
-    }
+    .fit-card h3 { font-size: 19px; letter-spacing: -.6px; font-weight: 550; margin: 0 0 10px; }
+    .fit-card p { font-size: 12px; color: var(--muted); line-height: 1.8; margin: 0; }
+    .checklist { list-style: none; padding: 0; margin: 0; }
+    .checklist li { display: flex; gap: 10px; align-items: center; font-size: 12px; color: #626c78; margin: 13px 0; }
+    .checklist li::before { content: "✓"; color: #399875; background: #dbefe5; border-radius: 50%; padding: 2px 4px; font-size: 9px; }
 
-    .success-panel .btn {
-      width: 100%;
-      margin-top: 10px;
-    }
-
-    /* -----------------------------------------
-       FOOTER / PRIVACY
-    ----------------------------------------- */
-
-    .site-footer {
-      padding: 42px 0 24px;
-      border-top: 1px solid var(--line);
-    }
-
-    .footer-top {
+    .faq-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 70px; }
+    .faq-heading p:last-child { color: var(--muted); font-size: 12px; line-height: 1.8; max-width: 260px; margin-top: 18px; }
+    .faq-list details { border-bottom: 1px solid #e0e5ed; }
+    .faq-list details:first-child { border-top: 1px solid #e0e5ed; }
+    .faq-list summary {
+      cursor: pointer;
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: space-between;
-      gap: 30px;
-      padding-bottom: 38px;
+      gap: 18px;
+      list-style: none;
+      padding: 20px 0;
+      font-size: 13px;
+      font-weight: 500;
     }
 
-    .footer-tagline {
-      color: var(--muted);
-      margin: 12px 0 0;
-      font-size: 12px;
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: "+"; color: #939aa7; font-size: 20px; font-weight: 400; }
+    .faq-list details[open] summary::after { content: "−"; }
+    .faq-list details p { margin: -2px 25px 20px 0; font-size: 12px; line-height: 1.9; color: var(--muted); }
+
+    .cta {
+      position: relative;
+      overflow: hidden;
+      margin-top: 90px;
+      padding: 58px 25px;
+      text-align: center;
+      border: 3px solid white;
+      border-radius: 30px;
+      background:
+        radial-gradient(ellipse at 0% 100%, #ffe6dd 0, transparent 55%),
+        radial-gradient(ellipse at 100% 0%, #dceafc 0, transparent 60%),
+        #fafbfd;
     }
 
-    .footer-links {
+    .cta h2 { max-width: 590px; margin: 20px auto 16px; }
+    .cta p { color: var(--muted); font-size: 13px; line-height: 1.8; max-width: 435px; margin: 0 auto 24px; }
+    .cta-small { font-size: 10px; color: #959ba5; margin-top: 14px; }
+
+    footer {
       display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .footer-links button {
-      border: 0;
-      background: transparent;
-      padding: 0;
-      color: inherit;
-      font: inherit;
-    }
-
-    .footer-bottom {
-      display: flex;
+      align-items: center;
       justify-content: space-between;
       gap: 20px;
-      padding-top: 22px;
-      border-top: 1px solid var(--line);
-      color: var(--subtle);
+      padding: 36px 0;
+      color: #9096a1;
       font-size: 10px;
     }
 
+    footer .brand { color: #5f6876; font-size: 19px; }
+    footer .brand-icon { width: 25px; height: 25px; border-radius: 8px; }
+    footer .brand-icon svg { width: 16px; height: 16px; }
+    .footer-right { display: flex; gap: 20px; align-items: center; }
+    .text-button { border: 0; padding: 0; color: inherit; background: transparent; font-size: inherit; }
+    .text-button:hover { color: var(--ink); }
+
+    /* Booking dialog */
+
     dialog {
-      width: min(560px, calc(100% - 32px));
-      max-height: 85vh;
-      padding: 30px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: var(--surface);
-      color: var(--text);
+      width: min(560px, calc(100% - 28px));
+      max-height: calc(100dvh - 40px);
+      padding: 0;
+      border: 2px solid white;
+      border-radius: 25px;
+      background: #f8fafd;
+      color: var(--ink);
+      box-shadow: 0 30px 100px #17233835;
+      overscroll-behavior: contain;
     }
 
     dialog::backdrop {
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(5px);
+      background: #2c354756;
+      backdrop-filter: blur(7px);
     }
 
-    dialog h2 {
-      font-size: 32px;
-      letter-spacing: -1px;
-      margin-top: 20px;
+    .modal-inner { padding: 32px; }
+    .modal-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+
+    .close-button {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #e7eaf0;
+      border-radius: 50%;
+      background: white;
+      color: #7c8390;
+      display: grid;
+      place-items: center;
+      font-size: 21px;
+      line-height: 1;
     }
 
-    dialog p {
-      font-size: 13px;
-      color: var(--muted);
-    }
+    .modal-step { display: flex; align-items: center; gap: 8px; font-size: 10px; color: #9ba2ae; margin-bottom: 17px; }
+    .modal-step .current { color: #e96748; }
+    .modal-step .line { width: 22px; height: 1px; background: #d9dfe8; }
+    .modal-title { font-size: 28px; letter-spacing: -1.2px; font-weight: 550; margin: 0 0 10px; }
+    .modal-copy { font-size: 12px; line-height: 1.8; color: var(--muted); margin: 0 0 24px; }
 
-    .dialog-close {
-      float: right;
-      border: 1px solid var(--line);
-      border-radius: 5px;
-      padding: 6px 12px;
-      background: transparent;
-      color: var(--text);
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 17px 14px; }
+    .field { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+    .field label { font-size: 11px; font-weight: 550; color: #616978; }
+    .field label span { color: #a1a7b0; font-weight: 400; }
+    .field input, .field select {
+      width: 100%;
+      min-height: 44px;
+      padding: 11px 12px;
+      color: var(--ink);
+      background: white;
+      border: 1px solid #e4e8f0;
+      border-radius: 10px;
       font-size: 12px;
     }
 
-    /* -----------------------------------------
-       RESPONSIVE
-    ----------------------------------------- */
+    .field input::placeholder { color: #afb5c0; }
+    .field input:focus, .field select:focus { border-color: #9dbdf4; }
+    .field-full { grid-column: 1 / -1; }
+    .form-submit { width: 100%; margin-top: 22px; }
+    .form-notice { font-size: 10px; line-height: 1.8; color: #9299a5; margin: 12px 0 0; text-align: center; }
 
-    @media (min-width: 761px) {
-      .nav-links {
-        display: flex !important;
-      }
+    .form-error {
+      font-size: 12px;
+      line-height: 1.7;
+      color: #a44432;
+      background: #fff0ea;
+      border: 1px solid #f4d0c6;
+      border-radius: 10px;
+      padding: 12px;
+      margin-top: 16px;
     }
 
-    @media (max-width: 1024px) {
-      .hero-grid {
-        gap: 30px;
-      }
+    .privacy-copy p { font-size: 12px; line-height: 1.85; color: var(--muted); }
+    body.modal-open { overflow: hidden; }
 
-      .split,
-      .pricing-layout,
-      .faq-layout,
-      .contact-layout {
-        gap: 40px;
-      }
-
-      .card {
-        padding: 24px;
-      }
-
-      .nav-links {
-        gap: 20px;
-      }
+    @media (min-width: 1000px) {
+      .feature-card { min-height: 348px; }
+      .visual { height: 232px; }
+      .chip-left { left: 8px; }
+      .chip-right { right: 1px; }
     }
 
-    @media (max-width: 760px) {
-      .container {
-        width: calc(100% - 36px);
-      }
-
-      .nav {
-        height: 70px;
-      }
-
-      .brand {
-        font-size: 16px;
-        letter-spacing: 3px;
-      }
-
-      .menu-toggle {
-        display: inline-flex;
-      }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 69px;
-        left: 0;
-        right: 0;
-        padding: 22px 18px;
-        background: #141611;
-        border-bottom: 1px solid var(--line);
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .nav-links > a:not(.btn) {
-        padding: 13px 0;
-        font-size: 14px;
-      }
-
-      .nav-links .btn {
-        margin-top: 12px;
-      }
-
-      .hero {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-
-      .hero-grid,
-      .split,
-      .pricing-layout,
-      .faq-layout,
-      .contact-layout {
-        grid-template-columns: 1fr;
-        gap: 42px;
-      }
-
-      h1 {
-        font-size: clamp(52px, 11vw, 76px);
-      }
-
-      h2 {
-        font-size: clamp(38px, 8.5vw, 54px);
-      }
-
-      .hero-copy > p:not(.eyebrow) {
-        font-size: 15px;
-      }
-
-      .engine {
-        min-height: 450px;
-      }
-
-      .hero-bottom {
-        margin-top: 38px;
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      .industry-list {
-        gap: 12px 20px;
-      }
-
-      .section {
-        padding: 72px 0;
-      }
-
-      .section-head {
-        display: block;
-        margin-bottom: 32px;
-      }
-
-      .section-head > p {
-        margin-top: 22px;
-        max-width: 480px;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .card-number {
-        margin-bottom: 24px;
-      }
-
-      .steps {
-        grid-template-columns: 1fr 1fr;
-        gap: 30px 22px;
-      }
-
-      .step-index {
-        margin-bottom: 18px;
-      }
-
-      .price-card,
-      .form-card {
-        padding: 25px;
-      }
-
-      .footer-top,
-      .footer-bottom {
-        flex-direction: column;
-      }
-
-      .footer-links {
-        gap: 20px;
-      }
+    @media (max-width: 800px) {
+      .nav-links { gap: 18px; }
+      .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .wide { grid-column: span 2; grid-row: 2; }
+      .bento .mint { grid-column: 1; grid-row: 3; }
+      .bento .integrations { grid-column: 2; grid-row: 3; }
+      .feature-card { min-height: 327px; }
+      .section { padding-top: 70px; }
+      .section-heading { align-items: flex-start; }
+      .steps { gap: 10px; }
+      .step { padding: 20px; }
+      .faq-layout { gap: 35px; grid-template-columns: .8fr 1.2fr; }
+      .fit-card { gap: 25px; padding: 27px; }
     }
 
-    @media (max-width: 390px) {
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .steps {
-        grid-template-columns: 1fr;
-      }
-
-      .price-card-top {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    @media (max-width: 560px) {
+      .container { width: calc(100% - 30px); }
+      .site-header { padding: 19px 0; }
+      .brand { font-size: 22px; }
+      .nav-links { display: none; }
+      .nav > .button { padding: 11px 13px; font-size: 11px; }
+      .hero { padding: 47px 0 32px; }
+      h1 { font-size: 43px; letter-spacing: -2.3px; line-height: 1.09; }
+      .hero-copy { font-size: 13px; max-width: 330px; }
+      .hero-actions .button { padding: 13px 16px; font-size: 12px; }
+      .hero-note { font-size: 9px; }
+      .bento { grid-template-columns: 1fr; gap: 13px; }
+      .bento .feature-card { grid-column: auto; grid-row: auto; }
+      .feature-card { min-height: 319px; padding: 21px 23px; }
+      .visual { height: 215px; }
+      .chip-left { left: max(4px, calc(50% - 140px)); }
+      .chip-right { right: max(0px, calc(50% - 145px)); }
+      .feature-card p { font-size: 12px; }
+      .feature-card h3 { font-size: 15px; }
+      .dashboard { padding: 12px; }
+      .dashboard-brand { font-size: 10px; }
+      .dashboard-right > span { display: none; }
+      .dashboard-tabs { gap: 14px; }
+      .report-pill { font-size: 8px; gap: 5px; padding-left: 8px; }
+      .report-pill .report-button { font-size: 7px; padding: 9px 10px; }
+      .section-heading, .faq-layout { display: block; }
+      .section-heading > p { margin-top: 16px; max-width: 330px; }
+      .steps { grid-template-columns: 1fr; }
+      .step { padding: 23px; }
+      .step-number { margin-bottom: 17px; }
+      .fit-card { grid-template-columns: 1fr; gap: 14px; padding: 24px; }
+      .faq-list { margin-top: 27px; }
+      .faq-heading p:last-child { max-width: none; }
+      .cta { margin-top: 65px; padding: 40px 20px; border-radius: 25px; }
+      .cta h2 { font-size: 32px; }
+      footer { flex-wrap: wrap; padding: 28px 0; }
+      .footer-right { width: 100%; justify-content: space-between; }
+      .modal-inner { padding: 24px 20px; }
+      .form-grid { grid-template-columns: 1fr; gap: 15px; }
+      .modal-title { font-size: 26px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        animation: none !important;
-        transition: none !important;
-      }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
     }
   </style>
 </head>
 
 <body>
-  <a href="#main" class="skip-link">Skip to content</a>
+  <!-- Reusable SVG symbols -->
+  <svg xmlns="http://www.w3.org/2000/svg"
+       width="0" height="0"
+       style="position:absolute;overflow:hidden"
+       aria-hidden="true">
+    <symbol id="logo-mark" viewBox="0 0 32 32">
+      <path d="M7 8h11v11H7zM20 13h5v12H13v-5h7z" fill="currentColor"/>
+      <path d="M7 21h4v4H7z" fill="currentColor" opacity=".65"/>
+    </symbol>
+    <symbol id="arrow-right" viewBox="0 0 24 24">
+      <path d="M5 12h14m-6-6 6 6-6 6" fill="none"
+            stroke="currentColor" stroke-width="1.7"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="play" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="m10 8 6 4-6 4z" fill="currentColor"/>
+    </symbol>
+  </svg>
 
-  <!-- HEADER -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="site-header">
     <div class="container nav">
-      <a href="#home" class="brand" aria-label="Orivant home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-            <path d="M15 2L28 15L15 28L2 15L15 2Z"
-              stroke="currentColor" stroke-width="1.2"/>
-            <path d="M15 8L22 15L15 22L8 15L15 8Z"
-              stroke="currentColor" stroke-width="1.2"/>
-            <path d="M15 2V8M28 15H22M15 28V22M2 15H8"
-              stroke="currentColor" stroke-width="1.2"/>
-          </svg>
+      <a href="#" class="brand" aria-label="Afterly home">
+        <span class="brand-icon" aria-hidden="true">
+          <svg><use href="#logo-mark"/></svg>
         </span>
-        ORIVANT
+        afterly
       </a>
 
-      <button
-        class="menu-toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="navLinks"
-        id="menuToggle"
-      >
-        Menu
-      </button>
-
-      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="#capabilities">Capabilities</a>
-        <a href="#approach">Our approach</a>
-        <a href="#pricing">Investment</a>
-        <a href="#faq">FAQ</a>
-        <a href="#register" class="btn btn-outline">
-          Book a discovery call <span aria-hidden="true">↗</span>
-        </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#solution">The solution</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#questions">FAQs</a>
       </nav>
+
+      <button class="button button-dark" type="button" data-book>
+        Let’s talk
+        <svg aria-hidden="true"><use href="#arrow-right"/></svg>
+      </button>
     </div>
   </header>
 
   <main id="main">
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="eyebrow">
+        <span class="status-dot"></span>
+        Built for independent real estate teams
+      </div>
 
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <p class="eyebrow">Intelligent intake infrastructure</p>
+      <h1 id="hero-title">
+        Your next client<br />
+        <span>shouldn’t have to wait.</span>
+      </h1>
 
-            <h1>
-              Your next client<br />
-              shouldn't have<br />
-              to <span class="serif">wait.</span>
-            </h1>
+      <p class="hero-copy">
+        Turn after-hours website inquiries into an organized next step.
+        We install and manage your intake, approved answers, and booking
+        workflow—connected to the tools you already use.
+      </p>
 
-            <p>
-              Turn website inquiries into informed conversations.
-              We build managed AI intake systems that answer approved
-              questions, qualify prospects, and book the next step—
-              even when your team is offline.
-            </p>
+      <div class="hero-actions">
+        <button class="button button-orange" type="button" data-book>
+          Book a discovery call
+          <svg aria-hidden="true"><use href="#arrow-right"/></svg>
+        </button>
 
-            <div class="hero-actions">
-              <a href="#register" class="btn btn-primary">
-                Find your fit <span class="arrow" aria-hidden="true">↗</span>
-              </a>
+        <a class="button button-white" href="#solution">
+          <svg aria-hidden="true"><use href="#play"/></svg>
+          Explore the system
+        </a>
+      </div>
 
-              <a href="#capabilities" class="btn btn-outline">
-                Explore the system <span aria-hidden="true">↓</span>
-              </a>
-            </div>
-
-            <div class="hero-note">
-              <span class="dot" aria-hidden="true"></span>
-              Built around your knowledge. Connected to your workflow.
-            </div>
-          </div>
-
-          <div class="engine" aria-label="Illustrative example of an AI intake conversation">
-            <div class="engine-top">
-              <span class="small-label">ORIVANT / INTAKE ENGINE</span>
-              <span class="engine-status">ILLUSTRATIVE DEMO</span>
-            </div>
-
-            <div class="orb" aria-hidden="true"></div>
-
-            <div class="sample-panel">
-              <div class="sample-panel-head">
-                <span class="small-label">A better first conversation</span>
-                <span class="sample-tag mono">WEB → CRM</span>
-              </div>
-
-              <div class="chat-line">
-                <span class="avatar" aria-hidden="true">V</span>
-                <p>
-                  I’m looking to sell my property. Can I speak
-                  with someone this week?
-                </p>
-              </div>
-
-              <div class="chat-line">
-                <span class="avatar" aria-hidden="true">O</span>
-                <p>
-                  I can help arrange that. What area is the property in,
-                  and when are you hoping to sell?
-                </p>
-              </div>
-
-              <div class="sample-result mono">
-                Sample workflow: requirements captured → team handoff
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-bottom">
-          <span class="small-label">Designed for high-value conversations</span>
-
-          <div class="industry-list" aria-label="Industries">
-            <span>Real estate</span>
-            <span>Professional services</span>
-            <span>Private clinics*</span>
-            <span>Specialist commerce</span>
-          </div>
-        </div>
+      <div class="hero-note">
+        Your website. Your CRM. Your calendar.
+        <span>·</span>
+        Managed for you.
       </div>
     </section>
 
-    <!-- CAPABILITIES -->
-    <section class="section" id="capabilities">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">01 / What we build</p>
-            <h2>
-              Not another chatbot.<br />
-              A better <span class="serif">front door.</span>
-            </h2>
-          </div>
+    <section class="container" id="solution" aria-label="Your intake system">
+      <div class="bento">
+        <!-- Card 1 -->
+        <article class="feature-card peach">
+          <div class="visual" aria-hidden="true">
+            <div class="float-chip chip-top">
+              <span class="mini-icon orange-icon">▤</span>
+              Answers from your information
+              <span class="tiny-check">✓</span>
+            </div>
 
-          <p>
-            One connected intake system.
-            From the first question to a clear next step,
-            without making your team start from scratch.
-          </p>
-        </div>
+            <div class="orange-pill">
+              <span class="sparkle">✦</span>
+              Your always-on front desk
+            </div>
 
-        <div class="cards">
-          <article class="card">
-            <div class="card-number mono">[ 01 — KNOWLEDGE ]</div>
-            <h3>Your business.<br />Not generic answers.</h3>
-            <p>
-              Give prospects useful answers grounded in your approved
-              services, policies, and operational information.
-            </p>
+            <div class="float-chip chip-left">
+              <span class="mini-icon blue-icon">↗</span>
+              Capture every detail
+            </div>
 
-            <ul class="feature-list">
-              <li>Approved knowledge and source control</li>
-              <li>Structured rules for critical details</li>
-              <li>Clear fallback when an answer is missing</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <div class="card-number mono">[ 02 — QUALIFICATION ]</div>
-            <h3>Better context.<br />Before the first call.</h3>
-            <p>
-              Capture the information your team actually needs,
-              through a natural conversation rather than a long form.
-            </p>
-
-            <ul class="feature-list">
-              <li>Business-specific intake questions</li>
-              <li>Budget, location, and timeline capture</li>
-              <li>Human review for sensitive decisions</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <div class="card-number mono">[ 03 — ACTION ]</div>
-            <h3>Less copying.<br />More moving forward.</h3>
-            <p>
-              Connect qualified inquiries to your existing systems,
-              with clear ownership of the next action.
-            </p>
-
-            <ul class="feature-list">
-              <li>CRM lead creation and updates</li>
-              <li>Calendar availability and booking</li>
-              <li>Team notifications and escalation</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- APPROACH -->
-    <section class="section" id="approach">
-      <div class="container split">
-        <div class="split-copy">
-          <p class="eyebrow">02 / Built with boundaries</p>
-
-          <h2>
-            Your expertise.<br />
-            Our infrastructure.<br />
-            <span class="serif">Your control.</span>
-          </h2>
-
-          <p>
-            Good automation knows what it can do—and when to stop.
-            We combine approved knowledge, controlled workflows,
-            and human handoff instead of leaving everything to a prompt.
-          </p>
-
-          <div class="principle">
-            <span class="mono">01</span>
-            <div>
-              <h3>Grounded, not improvised</h3>
-              <p>
-                Approved sources guide answers. Missing or conflicting
-                information triggers clarification or escalation.
-              </p>
+            <div class="float-chip chip-right">
+              <span class="mini-icon green-icon">✓</span>
+              Hand off when needed
             </div>
           </div>
 
-          <div class="principle">
-            <span class="mono">02</span>
-            <div>
-              <h3>Connected, not disruptive</h3>
-              <p>
-                We map the implementation around your CRM,
-                calendar, and existing follow-up process.
-              </p>
+          <h3>A warm welcome. Even after hours.</h3>
+          <p>
+            Answer approved questions and collect the details your team
+            needs—without leaving visitors at a dead end.
+          </p>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="feature-card lavender">
+          <div class="visual" aria-hidden="true">
+            <div class="lead-stack">
+              <div class="lead-header"><span>+</span> A new opportunity</div>
+              <div class="cursor-label">Afterly</div>
+
+              <div class="lead-card">
+                <div class="micro-label">
+                  <span class="micro-dot"></span>
+                  NEW BUYER INQUIRY
+                  <span style="margin-left:auto">Just now</span>
+                </div>
+
+                <div class="lead-title">Looking for a place to call home</div>
+                <div class="lead-meta">Budget captured · Timeline confirmed</div>
+
+                <div class="lead-bottom">
+                  <div class="avatar-group">
+                    <span class="avatar">JL</span>
+                    <span class="avatar">AM</span>
+                    <span class="avatar">SK</span>
+                  </div>
+                  <div class="assigned">Ready for your team ↗</div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="principle">
-            <span class="mono">03</span>
-            <div>
-              <h3>Managed, not abandoned</h3>
-              <p>
-                Testing, monitoring, and agreed updates are part
-                of the service—not an afterthought.
-              </p>
+          <h3>Better context. Better follow-up.</h3>
+          <p>
+            Capture buyer or seller requirements and send organized
+            inquiries into your existing CRM.
+          </p>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="feature-card mint">
+          <div class="visual" aria-hidden="true">
+            <div class="calendar">
+              <div class="calendar-title">
+                Find a time to talk
+                <span>Your calendar ⌄</span>
+              </div>
+
+              <div class="days">
+                <span class="day">S</span>
+                <span class="day active">M</span>
+                <span class="day active">T</span>
+                <span class="day active">W</span>
+                <span class="day active">T</span>
+                <span class="day">F</span>
+                <span class="day">S</span>
+              </div>
+
+              <div class="calendar-line">
+                <span>Appointment</span><strong>Buyer consultation</strong>
+              </div>
+              <div class="calendar-line">
+                <span>Availability</span><strong>Checked live ✓</strong>
+              </div>
+              <div class="calendar-line">
+                <span>Next step</span><strong>Choose your time</strong>
+              </div>
+
+              <div class="calendar-buttons">
+                <span>Go back</span><span>Continue</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="flow">
-          <div class="flow-head">
-            <span class="small-label">System architecture</span>
-            <span class="small-label">01—04</span>
-          </div>
-
-          <div class="flow-node">
-            <strong>Your approved knowledge</strong>
-            <span>Services · FAQs · Policies · Business rules</span>
-          </div>
-
-          <div class="flow-arrow" aria-hidden="true">↓</div>
-
-          <div class="flow-node highlight">
-            <strong>ORIVANT intake engine</strong>
-            <span>Retrieve · Respond · Capture · Validate</span>
-          </div>
-
-          <div class="flow-arrow" aria-hidden="true">↓</div>
-
-          <div class="flow-node">
-            <strong>Controlled next steps</strong>
-            <span>Qualification · Confirmation · Human review</span>
-          </div>
-
-          <div class="flow-arrow" aria-hidden="true">↓</div>
-
-          <div class="flow-end">
-            <div class="flow-node"><strong>Your CRM</strong></div>
-            <div class="flow-node"><strong>Your calendar</strong></div>
-            <div class="flow-node"><strong>Your team</strong></div>
-          </div>
-
-          <p class="flow-caption mono">
-            Integration availability is confirmed during discovery.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROCESS -->
-    <section class="section" id="process">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">03 / The implementation</p>
-            <h2>A clear path from<br /><span class="serif">idea to intake.</span></h2>
-          </div>
-
+          <h3>Less back-and-forth. More next steps.</h3>
           <p>
-            We start with one valuable workflow,
-            prove the implementation, and expand only where it makes sense.
+            Offer live availability and confirm appointments only when
+            your connected calendar accepts the booking.
           </p>
-        </div>
+        </article>
 
-        <div class="steps">
-          <article class="step">
-            <span class="step-index mono">01 / DISCOVER</span>
-            <h3>Find the friction.</h3>
-            <p>
-              Review your inquiry volume, response gaps,
-              current tools, and definition of a qualified lead.
-            </p>
-          </article>
+        <!-- Card 4 -->
+        <article class="feature-card wide">
+          <div class="visual" aria-hidden="true">
+            <div class="dashboard">
+              <div class="dashboard-top">
+                <div class="dashboard-brand">
+                  <span class="mini-icon orange-icon">↗</span>
+                  Your brokerage workspace
+                </div>
 
-          <article class="step">
-            <span class="step-index mono">02 / CONFIGURE</span>
-            <h3>Shape the system.</h3>
-            <p>
-              Organize approved information, define intake rules,
-              and connect the agreed CRM and calendar.
-            </p>
-          </article>
+                <div class="dashboard-right">
+                  <span>▦ Overview</span>
+                  <div class="avatar-group">
+                    <span class="avatar">JL</span>
+                    <span class="avatar">AM</span>
+                    <span class="avatar">SK</span>
+                  </div>
+                </div>
+              </div>
 
-          <article class="step">
-            <span class="step-index mono">03 / VALIDATE</span>
-            <h3>Test the boundaries.</h3>
-            <p>
-              Check common questions, unsupported requests,
-              booking failures, and human handoff before launch.
-            </p>
-          </article>
+              <div class="dashboard-tabs">
+                <span>Overview</span>
+                <span class="selected">Inquiries</span>
+                <span>Appointments</span>
+                <span class="tag">✦ After hours</span>
+              </div>
 
-          <article class="step">
-            <span class="step-index mono">04 / IMPROVE</span>
-            <h3>Measure what matters.</h3>
-            <p>
-              Review captured inquiries, appointment outcomes,
-              and workflow failures—not just chat activity.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
+              <div class="pipeline">
+                <span><i></i> New inquiries <b>8</b></span>
+                <span><i></i> Follow-up ready <b>5</b></span>
+                <span><i></i> Appointments <b>3</b></span>
+              </div>
 
-    <!-- PRICING -->
-    <section class="section" id="pricing">
-      <div class="container pricing-layout">
-        <div class="pricing-copy">
-          <p class="eyebrow">04 / The investment</p>
+              <div class="report-pill">
+                <span class="sparkle">✦</span>
+                A clearer picture of your pipeline
+                <span class="report-button">Weekly overview</span>
+              </div>
+            </div>
+          </div>
 
-          <h2>
-            A defined scope.<br />
-            A clear <span class="serif">starting point.</span>
-          </h2>
-
+          <h3>Know what happens after “hello.”</h3>
           <p>
-            Begin with a focused website intake system.
-            Your proposal spells out the integrations, responsibilities,
-            and ongoing support before work begins.
+            Review conversations, captured inquiries, and appointment
+            outcomes. We use what’s happening to improve your workflow.
           </p>
+        </article>
 
-          <div class="fit-note">
-            Best suited to businesses with existing inbound demand
-            and a team ready to follow up. This system captures and
-            progresses inquiries—it does not replace lead generation.
+        <!-- Card 5 -->
+        <article class="feature-card peach integrations">
+          <div class="visual" aria-hidden="true">
+            <div class="integration-orbit">
+              <div class="orbit-ring"></div>
+
+              <div class="app-icon app-center">
+                <svg><use href="#logo-mark"/></svg>
+              </div>
+
+              <div class="app-icon app-1" title="Calendar">▦</div>
+              <div class="app-icon app-2" title="Team notifications">✣</div>
+              <div class="app-icon app-3" title="Documents">▰</div>
+              <div class="app-icon app-4" title="Automations">✺</div>
+              <div class="app-icon app-5" title="CRM">◇</div>
+              <div class="app-icon app-6" title="Website">▥</div>
+            </div>
           </div>
-        </div>
 
-        <article class="price-card">
-          <div class="price-card-top">
-            <span class="small-label">Website intake / Foundation</span>
-            <span class="pill">MANAGED IMPLEMENTATION</span>
-          </div>
-
-          <p class="price"><small>From </small>$3,500</p>
-          <p class="monthly">setup + from $650/month management</p>
-
-          <ul class="feature-list">
-            <li>One business website and branded widget</li>
-            <li>Approved knowledge and one intake workflow</li>
-            <li>One supported CRM and calendar integration</li>
-            <li>Lead capture and human handoff</li>
-            <li>Pre-launch testing and staff walkthrough</li>
-            <li>Monitoring and a defined monthly update allowance</li>
-          </ul>
-
-          <a href="#register" class="btn btn-primary">
-            Discuss your implementation
-            <span class="arrow" aria-hidden="true">↗</span>
-          </a>
-
-          <p class="price-disclaimer">
-            USD. Final pricing depends on scope. Applicable taxes,
-            third-party subscriptions, and usage charges are additional.
-            Additional channels, locations, and custom integrations
-            are quoted separately.
+          <h3>Your tools. Working together.</h3>
+          <p>
+            One website, one CRM, and one calendar to start.
+            We confirm compatibility before you commit.
           </p>
         </article>
       </div>
+
+      <p class="integration-note">
+        Illustrative interface previews. Final workflows depend on your approved scope and integrations.
+      </p>
     </section>
 
-    <!-- FAQ -->
-    <section class="section" id="faq">
-      <div class="container faq-layout">
+    <section class="container section" id="how-it-works">
+      <div class="section-heading">
         <div>
-          <p class="eyebrow">05 / Before we talk</p>
-          <h2>Good questions.<br /><span class="serif">Clear answers.</span></h2>
+          <p class="section-kicker">Simple from the start</p>
+          <h2>You run the brokerage.<br />We handle the setup.</h2>
+        </div>
+        <p>
+          A focused implementation, built around the way
+          your team already works. No new software project to manage.
+        </p>
+      </div>
+
+      <div class="steps">
+        <article class="step">
+          <div class="step-number">01</div>
+          <h3>Map your intake</h3>
+          <p>
+            We review your website inquiries, recurring questions,
+            follow-up process, CRM, and calendar. Together, we define
+            exactly what the system should—and shouldn’t—do.
+          </p>
+        </article>
+
+        <article class="step">
+          <div class="step-number">02</div>
+          <h3>Build, connect, and test</h3>
+          <p>
+            We configure your approved answers, intake questions, and
+            integrations. Your team reviews the experience before
+            it goes live, including handoffs and failure scenarios.
+          </p>
+        </article>
+
+        <article class="step">
+          <div class="step-number">03</div>
+          <h3>Launch with ongoing care</h3>
+          <p>
+            We monitor the system, review outcomes, and maintain your
+            agreed workflow. Your team stays in charge of relationships
+            and decisions.
+          </p>
+        </article>
+      </div>
+
+      <div class="fit-card">
+        <div>
+          <h3>A good fit starts with real demand.</h3>
+          <p>
+            Afterly helps you handle inquiries you’re already receiving.
+            It isn’t an advertising service or a promise of new traffic.
+          </p>
         </div>
 
-        <div class="faq">
-          <details>
-            <summary>Is this a replacement for my team?</summary>
-            <p>
-              No. It handles repetitive first-response and intake tasks
-              so your team receives better context. Staff remain
-              responsible for sensitive decisions, relationship-building,
-              and requests outside the agreed workflow.
-            </p>
-          </details>
-
-          <details>
-            <summary>Can you guarantee every answer is correct?</summary>
-            <p>
-              No AI system can honestly guarantee that. We reduce risk
-              through approved knowledge, structured rules, testing,
-              and escalation. Important actions such as booking are
-              confirmed by the connected system, not guessed by a model.
-            </p>
-          </details>
-
-          <details>
-            <summary>Will it work with our existing software?</summary>
-            <p>
-              Often, where your tools provide suitable APIs or supported
-              integration methods. We verify access, permissions,
-              functionality, and any vendor charges before including
-              an integration in your proposal.
-            </p>
-          </details>
-
-          <details>
-            <summary>How is our information handled?</summary>
-            <p>
-              Data flows, provider access, retention, and security
-              requirements are agreed during scoping. Using an external
-              AI provider can involve sending selected information to
-              that provider. We do not describe a system as fully local
-              unless it actually is.
-            </p>
-          </details>
-
-          <details>
-            <summary>Can you support clinics or law firms?</summary>
-            <p>
-              Administrative intake may be possible after reviewing
-              professional obligations, vendor terms, and data-handling
-              requirements. The system is not a substitute for medical
-              advice, legal advice, or a professional conflict check.
-              Sensitive use cases require additional assessment.
-            </p>
-          </details>
-
-          <details>
-            <summary>How long does implementation take?</summary>
-            <p>
-              A focused implementation may target approximately two
-              to four weeks after required access and approved materials
-              are available. Timing is confirmed in the proposal and
-              can increase for custom integrations or additional reviews.
-            </p>
-          </details>
-
-          <details>
-            <summary>Can we add WhatsApp or other channels later?</summary>
-            <p>
-              Yes, where supported and appropriately configured.
-              We recommend starting with one reliable website workflow.
-              Additional channels depend on platform approvals,
-              messaging rules, integration access, and separate pricing.
-            </p>
-          </details>
-        </div>
+        <ul class="checklist">
+          <li>You receive regular website inquiries.</li>
+          <li>You have a CRM and a team calendar.</li>
+          <li>Someone owns follow-up with new leads.</li>
+          <li>You want a managed system, not another DIY tool.</li>
+        </ul>
       </div>
     </section>
 
-    <!-- REGISTRATION -->
-    <section class="section contact-section" id="register">
-      <div class="container contact-layout">
-        <div class="contact-copy">
-          <p class="eyebrow">06 / Start a conversation</p>
-
-          <h2>
-            Let's find the gap<br />
-            between inquiry<br />
-            and <span class="serif">opportunity.</span>
-          </h2>
-
-          <p>
-            Tell us a little about your business, then choose a time
-            for a discovery call. We’ll explore whether a focused
-            intake system makes practical and financial sense.
-          </p>
-
-          <div class="call-agenda">
-            <p class="small-label">On the discovery call</p>
-
-            <div class="agenda-item">
-              <span class="mono">01</span>
-              <span>Your current inquiry and follow-up process.</span>
-            </div>
-
-            <div class="agenda-item">
-              <span class="mono">02</span>
-              <span>Where automation can help—and where it shouldn't.</span>
-            </div>
-
-            <div class="agenda-item">
-              <span class="mono">03</span>
-              <span>A realistic scope, budget, and next step.</span>
-            </div>
-          </div>
-
-          <p class="contact-note">
-            No sensitive client, patient, or case information is needed.
-          </p>
-        </div>
-
-        <div class="form-card">
-          <form id="leadForm" method="POST">
-            <h3 class="form-heading">Tell us about your business.</h3>
-            <p class="form-intro">
-              Step 1 of 2 — register your interest.
-            </p>
-
-            <input
-              type="hidden"
-              name="_subject"
-              value="New ORIVANT discovery request"
-            />
-
-            <input
-              type="hidden"
-              name="source"
-              value="ORIVANT website"
-            />
-
-            <!-- Honeypot: real users should leave this empty. -->
-            <div hidden aria-hidden="true">
-              <label>
-                Leave this field empty
-                <input
-                  type="text"
-                  name="_gotcha"
-                  tabindex="-1"
-                  autocomplete="off"
-                />
-              </label>
-            </div>
-
-            <div class="form-grid">
-              <div class="field">
-                <label for="fullName">Full name *</label>
-                <input
-                  id="fullName"
-                  name="full_name"
-                  type="text"
-                  placeholder="Alex Morgan"
-                  autocomplete="name"
-                  maxlength="100"
-                  required
-                />
-              </div>
-
-              <div class="field">
-                <label for="email">Work email *</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="alex@company.com"
-                  autocomplete="email"
-                  maxlength="254"
-                  required
-                />
-              </div>
-
-              <div class="field">
-                <label for="company">Company *</label>
-                <input
-                  id="company"
-                  name="company"
-                  type="text"
-                  placeholder="Your company"
-                  autocomplete="organization"
-                  maxlength="150"
-                  required
-                />
-              </div>
-
-              <div class="field">
-                <label for="website">Website</label>
-                <input
-                  id="website"
-                  name="website"
-                  type="url"
-                  placeholder="https://yourcompany.com"
-                  autocomplete="url"
-                  maxlength="300"
-                />
-              </div>
-
-              <div class="field">
-                <label for="industry">Industry *</label>
-                <select id="industry" name="industry" required>
-                  <option value="" disabled selected>Select industry</option>
-                  <option>Real estate</option>
-                  <option>Professional services</option>
-                  <option>Legal services</option>
-                  <option>Private clinic</option>
-                  <option>Specialist e-commerce</option>
-                  <option>Other</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label for="volume">Monthly inquiries *</label>
-                <select id="volume" name="monthly_inquiries" required>
-                  <option value="" disabled selected>Select range</option>
-                  <option>Fewer than 50</option>
-                  <option>50–150</option>
-                  <option>151–300</option>
-                  <option>301–1,000</option>
-                  <option>More than 1,000</option>
-                  <option>Not sure yet</option>
-                </select>
-              </div>
-
-              <div class="field full">
-                <label for="goal">What would you most like to improve? *</label>
-                <select id="goal" name="primary_goal" required>
-                  <option value="" disabled selected>Select your priority</option>
-                  <option>Respond to after-hours inquiries</option>
-                  <option>Qualify leads before staff follow-up</option>
-                  <option>Book more consultations</option>
-                  <option>Reduce repetitive questions</option>
-                  <option>Connect intake with our CRM</option>
-                  <option>Explore what is possible</option>
-                </select>
-              </div>
-
-              <div class="field full">
-                <label for="budget">Expected setup budget *</label>
-                <select id="budget" name="setup_budget" required>
-                  <option value="" disabled selected>Select budget</option>
-                  <option>Under $3,500</option>
-                  <option>$3,500–$6,000</option>
-                  <option>$6,001–$10,000</option>
-                  <option>$10,000+</option>
-                  <option>I need help defining the scope</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="consent">
-              <input
-                id="consent"
-                type="checkbox"
-                name="inquiry_contact_consent"
-                value="Agreed to contact about this inquiry"
-                required
-              />
-              <div>
-                <label for="consent">
-                  I agree to be contacted about this inquiry and
-                  acknowledge the
-                </label>
-                <button class="text-button" type="button" data-open-privacy>
-                  privacy notice</button>.
-                This does not subscribe you to a newsletter.
-              </div>
-            </div>
-
-            <button
-              type="submit"
-              id="submitButton"
-              class="btn btn-primary submit-btn"
-            >
-              Register & choose a call
-              <span class="arrow" aria-hidden="true">↗</span>
-            </button>
-
-            <p
-              id="formStatus"
-              class="form-status"
-              role="status"
-              aria-live="polite"
-            ></p>
-
-            <p class="form-footnote">
-              Scheduling opens after your registration is received.
-            </p>
-
-            <noscript>
-              <p class="form-status">
-                Please enable JavaScript to submit this form and
-                access scheduling.
-              </p>
-            </noscript>
-          </form>
-
-          <div
-            class="success-panel"
-            id="successPanel"
-            tabindex="-1"
-            hidden
-          >
-            <div class="success-icon" aria-hidden="true">✓</div>
-            <p class="small-label">Step 2 of 2</p>
-            <h3>You’re registered.</h3>
-            <p>
-              Thank you for the introduction. Choose an available
-              time below to complete your call booking.
-            </p>
-
-            <a
-              class="btn btn-primary"
-              id="bookingLink"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Choose a call time
-              <span class="arrow" aria-hidden="true">↗</span>
-            </a>
-
-            <p class="form-footnote">
-              Opens Calendly in a new tab. Your appointment is confirmed
-              only after you complete scheduling there.
-            </p>
-          </div>
-        </div>
+    <section class="container section faq-layout" id="questions">
+      <div class="faq-heading">
+        <p class="section-kicker">A little more clarity</p>
+        <h2>Good questions.<br />Straight answers.</h2>
+        <p>
+          Not sure how this fits your brokerage?
+          That’s exactly what the discovery call is for.
+        </p>
       </div>
+
+      <div class="faq-list">
+        <details>
+          <summary>Is this replacing our team?</summary>
+          <p>
+            No. It handles the first response, approved questions, and
+            structured intake so your team can follow up with context.
+            Sensitive, unsupported, or out-of-scope requests are handed
+            off to a designated person.
+          </p>
+        </details>
+
+        <details>
+          <summary>Can it work with our current CRM?</summary>
+          <p>
+            Compatibility depends on your CRM’s API, account permissions,
+            and the workflow you need. We check those requirements during
+            discovery and confirm the supported integration in your proposal.
+          </p>
+        </details>
+
+        <details>
+          <summary>What if it doesn’t know an answer?</summary>
+          <p>
+            The system is designed to use approved business information
+            and hand off when support is missing or conflicting.
+            AI can still make mistakes, so we use testing, restricted
+            actions, backend rules, and ongoing review—not a promise
+            of perfect answers.
+          </p>
+        </details>
+
+        <details>
+          <summary>What does an implementation include?</summary>
+          <p>
+            The starting scope is one website widget, one business or
+            location, approved FAQs, a defined intake flow, one supported
+            CRM, one calendar, human handoff, and basic reporting.
+            Additional channels or custom workflows are scoped separately.
+          </p>
+        </details>
+
+        <details>
+          <summary>How is pricing structured?</summary>
+          <p>
+            There’s a one-time implementation fee and an ongoing management
+            fee. Your proposal lists the exact scope, support allowance,
+            and any third-party usage costs before you commit.
+          </p>
+        </details>
+
+        <details>
+          <summary>How is customer information handled?</summary>
+          <p>
+            Before launch, we agree on the information collected, providers
+            involved, access permissions, retention, and deletion requirements.
+            The workflow should collect only what your team needs.
+            Data may be processed by approved external providers; it is
+            not represented as an entirely local system.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <section class="container cta" aria-labelledby="cta-title">
+      <div class="eyebrow">
+        <span class="status-dot"></span>
+        Let’s see if there’s a fit
+      </div>
+
+      <h2 id="cta-title">Make your next inquiry<br />a better first impression.</h2>
+
+      <p>
+        Tell us a little about your company, then choose a time.
+        We’ll explore your intake process and what’s worth automating.
+      </p>
+
+      <button class="button button-orange" type="button" data-book>
+        Book a discovery call
+        <svg aria-hidden="true"><use href="#arrow-right"/></svg>
+      </button>
+
+      <div class="cta-small">A practical conversation. No obligation to move forward.</div>
     </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-top">
-        <div>
-          <a class="brand" href="#home">ORIVANT</a>
-          <p class="footer-tagline">
-            Intelligent intake. Built around your business.
-          </p>
-        </div>
+  <footer class="container">
+    <a href="#" class="brand" aria-label="Afterly home">
+      <span class="brand-icon" aria-hidden="true">
+        <svg><use href="#logo-mark"/></svg>
+      </span>
+      afterly
+    </a>
 
-        <nav class="footer-links" aria-label="Footer navigation">
-          <a href="#capabilities">Capabilities</a>
-          <a href="#pricing">Investment</a>
-          <a href="#register">Get in touch</a>
-          <button type="button" data-open-privacy>Privacy</button>
-        </nav>
-      </div>
-
-      <div class="footer-bottom">
-        <span>© <span id="year"></span> ORIVANT. All rights reserved.</span>
-        <span>*Regulated use cases are subject to additional assessment.</span>
-      </div>
+    <div class="footer-right">
+      <span>© <span id="year"></span> Afterly. Thoughtful intake. Human follow-up.</span>
+      <button class="text-button" type="button" id="privacy-button">
+        Booking privacy
+      </button>
     </div>
   </footer>
 
-  <!-- BASIC PRIVACY NOTICE: REVIEW BEFORE LAUNCH -->
-  <dialog id="privacyDialog" aria-labelledby="privacyTitle">
-    <button type="button" class="dialog-close" id="closePrivacy">
-      Close
-    </button>
+  <!-- Company-information collection -->
+  <dialog id="booking-dialog" aria-labelledby="booking-title">
+    <div class="modal-inner">
+      <div class="modal-top">
+        <div class="brand" aria-label="Afterly">
+          <span class="brand-icon" aria-hidden="true">
+            <svg><use href="#logo-mark"/></svg>
+          </span>
+          afterly
+        </div>
 
-    <h2 id="privacyTitle">Privacy notice</h2>
+        <button type="button" class="close-button"
+                data-close aria-label="Close booking form">×</button>
+      </div>
 
-    <p>
-      <strong>Who is responsible:</strong>
-      <span id="privacyBusiness"></span>.
-      For questions or deletion requests, contact
-      <a id="privacyEmail"></a>.
-    </p>
+      <div class="modal-step" aria-label="Step 1 of 2: Company details">
+        <span class="current">01 · Your company</span>
+        <span class="line"></span>
+        <span>02 · Choose a time</span>
+      </div>
 
-    <p>
-      <strong>What this form collects:</strong>
-      Your name, email, company, optional website, and selected
-      business requirements. Please do not submit sensitive information
-      about patients, clients, legal matters, or financial accounts.
-    </p>
+      <h2 class="modal-title" id="booking-title">First, a little about you.</h2>
+      <p class="modal-copy">
+        Help us make the conversation useful.
+        Next, you’ll choose an available appointment in Calendly.
+      </p>
 
-    <p>
-      <strong>Why:</strong>
-      To review your request, communicate about a potential engagement,
-      and help arrange a discovery call. This form does not add you
-      to a marketing newsletter.
-    </p>
+      <form id="booking-form">
+        <div class="form-grid">
+          <div class="field">
+            <label for="full-name">Full name</label>
+            <input id="full-name" name="name" autocomplete="name"
+                   placeholder="Alex Morgan" maxlength="100" required />
+          </div>
 
-    <p>
-      <strong>Service providers:</strong>
-      Form submissions are processed through Formspree and may be
-      delivered to our business email. If you choose to book a call,
-      Calendly processes the information you provide on its platform.
-      Hosting and service providers may also process technical
-      information under their own terms.
-    </p>
+          <div class="field">
+            <label for="email">Work email</label>
+            <input id="email" name="email" type="email" autocomplete="email"
+                   placeholder="alex@company.com" maxlength="254" required />
+          </div>
 
-    <p>
-      <strong>Retention:</strong>
-      <span id="privacyRetention"></span>
-    </p>
+          <div class="field">
+            <label for="company">Company name</label>
+            <input id="company" name="company" autocomplete="organization"
+                   placeholder="Your brokerage" maxlength="150" required />
+          </div>
 
-    <p>
-      <strong>Your choices:</strong>
-      Contact us to request access, correction, or deletion.
-      Applicable rights and exceptions depend on your jurisdiction.
-    </p>
+          <div class="field">
+            <label for="website">Company website <span>· optional</span></label>
+            <input id="website" name="website" type="url"
+                   autocomplete="url" placeholder="https://company.com"
+                   maxlength="300" />
+          </div>
 
-    <p>
-      This page does not include advertising trackers or embedded
-      scheduling scripts. Separate services you choose to visit
-      operate under their own privacy and cookie policies.
-    </p>
+          <div class="field">
+            <label for="volume">Monthly inbound inquiries</label>
+            <select id="volume" name="volume" required>
+              <option value="" disabled selected>Select a range</option>
+              <option>Fewer than 50</option>
+              <option>50–100</option>
+              <option>101–300</option>
+              <option>301–1,000</option>
+              <option>More than 1,000</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="crm">Current CRM</label>
+            <input id="crm" name="crm" placeholder="CRM name, or none"
+                   maxlength="100" required />
+          </div>
+        </div>
+
+        <div id="booking-error" class="form-error" role="alert" hidden></div>
+
+        <button type="submit" class="button button-orange form-submit">
+          Continue to available times
+          <svg aria-hidden="true"><use href="#arrow-right"/></svg>
+        </button>
+
+        <p class="form-notice">
+          Continuing passes these details to Calendly to prefill your booking.
+          Your appointment is confirmed only after you complete scheduling.
+          Please don’t include sensitive client information.
+        </p>
+      </form>
+    </div>
+  </dialog>
+
+  <dialog id="privacy-dialog" aria-labelledby="privacy-title">
+    <div class="modal-inner privacy-copy">
+      <div class="modal-top">
+        <h2 class="modal-title" id="privacy-title" style="margin:0">Booking privacy</h2>
+        <button type="button" class="close-button"
+                data-close aria-label="Close privacy information">×</button>
+      </div>
+
+      <p>
+        The company-details form does not save your entries in this page’s
+        local storage or send them to a website backend.
+      </p>
+      <p>
+        When you continue to scheduling, your entries are included in a
+        Calendly link to prefill the booking form. That link may appear in
+        your browser history, and Calendly processes the information under
+        its own privacy terms.
+      </p>
+      <p>
+        Completing a booking shares the submitted information with the
+        meeting organizer so they can prepare for and contact you about
+        your appointment. Do not submit confidential client information.
+      </p>
+      <p>
+        This page also requests the Inter font from Google Fonts, which
+        receives the network information needed to deliver the font.
+      </p>
+    </div>
   </dialog>
 
   <script>
-    /* =========================================
-       CONFIGURATION — REPLACE BEFORE LAUNCH
-       ========================================= */
+    /*
+     * LAUNCH CONFIGURATION
+     * --------------------
+     * 1. Replace the empty string below with your real Calendly event URL.
+     *    Example: "https://calendly.com/your-company/discovery"
+     *
+     * 2. In that Calendly event, use the single "Name" invitee field.
+     *
+     * 3. Add these four custom questions in this exact order:
+     *    a1: Company name             (text)
+     *    a2: Company website          (text, optional)
+     *    a3: Monthly inbound inquiries (text)
+     *    a4: Current CRM              (text)
+     *
+     * 4. Connect your calendar and test the entire booking flow.
+     *
+     * No fake confirmation is displayed when scheduling isn't connected.
+     */
+    const CALENDLY_URL = "";
 
-    const CONFIG = Object.freeze({
-      // Formspree gives you an endpoint such as:
-      // https://formspree.io/f/abcdefgh
-      formEndpoint: "https://formspree.io/f/YOUR_FORM_ID",
+    const bookingDialog = document.getElementById("booking-dialog");
+    const privacyDialog = document.getElementById("privacy-dialog");
+    const bookingForm = document.getElementById("booking-form");
+    const bookingError = document.getElementById("booking-error");
 
-      // Use your actual public Calendly event URL.
-      calendlyUrl: "https://calendly.com/YOUR_USERNAME/discovery",
+    let lastTrigger = null;
 
-      // Replace with the actual business/entity responsible for data.
-      legalBusinessName: "YOUR LEGAL BUSINESS NAME, trading as ORIVANT",
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-      contactEmail: "YOUR_BUSINESS_EMAIL",
-
-      // This is a proposed policy. Only publish it if you implement it
-      // across your form provider, email, exports, and CRM.
-      retentionText:
-        "Unsuccessful inquiries are deleted within 90 days of our last " +
-        "interaction, unless a longer period is legally required. " +
-        "Client records are handled under the engagement’s agreed policy."
-    });
-
-    /* =========================================
-       NAVIGATION
-       ========================================= */
-
-    const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("navLinks");
-
-    function closeMenu() {
-      navLinks.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
-      menuToggle.textContent = "Menu";
+    function openDialog(dialog, trigger) {
+      lastTrigger = trigger;
+      dialog.showModal();
+      document.body.classList.add("modal-open");
     }
 
-    menuToggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.textContent = isOpen ? "Close" : "Menu";
-    });
-
-    navLinks.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", closeMenu);
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && navLinks.classList.contains("open")) {
-        closeMenu();
-        menuToggle.focus();
-      }
-    });
-
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-
-    /* =========================================
-       PRIVACY DIALOG
-       ========================================= */
-
-    const privacyDialog = document.getElementById("privacyDialog");
-
-    document.getElementById("privacyBusiness").textContent =
-      CONFIG.legalBusinessName;
-
-    const privacyEmail = document.getElementById("privacyEmail");
-    privacyEmail.textContent = CONFIG.contactEmail;
-    privacyEmail.href = "mailto:" + CONFIG.contactEmail;
-
-    document.getElementById("privacyRetention").textContent =
-      CONFIG.retentionText;
-
-    document.querySelectorAll("[data-open-privacy]").forEach((button) => {
+    document.querySelectorAll("[data-book]").forEach(button => {
       button.addEventListener("click", () => {
-        privacyDialog.showModal();
+        bookingError.hidden = true;
+        openDialog(bookingDialog, button);
       });
     });
 
-    document.getElementById("closePrivacy").addEventListener("click", () => {
-      privacyDialog.close();
+    document.getElementById("privacy-button").addEventListener("click", event => {
+      openDialog(privacyDialog, event.currentTarget);
     });
 
-    /* =========================================
-       REGISTRATION
-       ========================================= */
+    document.querySelectorAll("dialog").forEach(dialog => {
+      dialog.querySelector("[data-close]").addEventListener("click", () => {
+        dialog.close();
+      });
 
-    const leadForm = document.getElementById("leadForm");
-    const submitButton = document.getElementById("submitButton");
-    const formStatus = document.getElementById("formStatus");
-    const successPanel = document.getElementById("successPanel");
-    const bookingLink = document.getElementById("bookingLink");
+      dialog.addEventListener("click", event => {
+        const bounds = dialog.getBoundingClientRect();
+        const outside =
+          event.clientX < bounds.left ||
+          event.clientX > bounds.right ||
+          event.clientY < bounds.top ||
+          event.clientY > bounds.bottom;
 
-    let submitting = false;
+        if (event.target === dialog && outside) dialog.close();
+      });
 
-    function configurationReady() {
-      try {
-        const endpoint = new URL(CONFIG.formEndpoint);
-        const calendar = new URL(CONFIG.calendlyUrl);
+      dialog.addEventListener("close", () => {
+        document.body.classList.remove("modal-open");
+        if (lastTrigger) lastTrigger.focus();
+      });
+    });
 
-        return (
-          endpoint.protocol === "https:" &&
-          endpoint.hostname === "formspree.io" &&
-          /^\/f\/[a-zA-Z0-9]+$/.test(endpoint.pathname) &&
-          !CONFIG.formEndpoint.includes("YOUR_") &&
-          calendar.protocol === "https:" &&
-          calendar.hostname === "calendly.com" &&
-          !CONFIG.calendlyUrl.includes("YOUR_") &&
-          !CONFIG.legalBusinessName.includes("YOUR ") &&
-          !CONFIG.contactEmail.includes("YOUR_") &&
-          /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(CONFIG.contactEmail)
-        );
-      } catch {
-        return false;
-      }
-    }
-
-    function setStatus(message, isError = false) {
-      formStatus.textContent = message;
-      formStatus.classList.toggle("error", isError);
-    }
-
-    leadForm.addEventListener("submit", async (event) => {
+    bookingForm.addEventListener("submit", event => {
       event.preventDefault();
+      bookingError.hidden = true;
 
-      if (submitting || !leadForm.reportValidity()) return;
+      if (!bookingForm.reportValidity()) return;
 
-      if (!configurationReady()) {
-        setStatus(
-          "Registration is not connected yet. The site owner must " +
-          "configure the form, booking link, and business details before launch.",
-          true
-        );
+      // Reject whitespace-only values, which HTML "required" permits.
+      for (const field of bookingForm.querySelectorAll("input[required]")) {
+        if (!field.value.trim()) {
+          field.setCustomValidity("Please enter a value.");
+          field.reportValidity();
+          field.addEventListener("input", () => {
+            field.setCustomValidity("");
+          }, { once: true });
+          return;
+        }
+      }
+
+      if (!CALENDLY_URL) {
+        bookingError.textContent =
+          "Online scheduling isn’t connected yet. No information has been sent " +
+          "and no appointment has been booked. The site owner must configure " +
+          "the scheduling link before accepting bookings.";
+        bookingError.hidden = false;
         return;
       }
 
-      submitting = true;
-      submitButton.disabled = true;
-      submitButton.textContent = "Sending your registration…";
-      setStatus("");
-
-      const formData = new FormData(leadForm);
-
-      // Do not place personal information in the booking URL.
-      // The visitor enters scheduling details directly on Calendly.
-      formData.set("submitted_at", new Date().toISOString());
-      formData.set("privacy_notice_version", "1.0");
-
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 20000);
+      let schedulingURL;
 
       try {
-        const response = await fetch(CONFIG.formEndpoint, {
-          method: "POST",
-          body: formData,
-          headers: { Accept: "application/json" },
-          signal: controller.signal
-        });
+        schedulingURL = new URL(CALENDLY_URL);
 
-        if (!response.ok) {
-          throw new Error(
-            "We couldn’t confirm your submission. Please try again shortly."
-          );
+        const validHost =
+          schedulingURL.hostname === "calendly.com" ||
+          schedulingURL.hostname.endsWith(".calendly.com");
+
+        if (schedulingURL.protocol !== "https:" || !validHost) {
+          throw new Error("Invalid scheduling URL");
         }
-
-        bookingLink.href = CONFIG.calendlyUrl;
-
-        leadForm.hidden = true;
-        successPanel.hidden = false;
-        successPanel.focus();
-      } catch (error) {
-        const message =
-          error.name === "AbortError"
-            ? "The request timed out. We couldn’t confirm receipt. " +
-              "Please check your connection before retrying."
-            : error.message === "Failed to fetch"
-              ? "Connection problem. We couldn’t confirm receipt. " +
-                "Please check your connection and try again."
-              : error.message ||
-                "Something went wrong. Please try again.";
-
-        setStatus(message, true);
-      } finally {
-        clearTimeout(timeout);
-        submitting = false;
-        submitButton.disabled = false;
-        submitButton.innerHTML =
-          'Register & choose a call ' +
-          '<span class="arrow" aria-hidden="true">↗</span>';
+      } catch {
+        bookingError.textContent =
+          "The scheduling link isn’t configured correctly. " +
+          "No information has been sent and no appointment has been booked.";
+        bookingError.hidden = false;
+        return;
       }
+
+      const data = new FormData(bookingForm);
+
+      schedulingURL.searchParams.set("name", data.get("name").trim());
+      schedulingURL.searchParams.set("email", data.get("email").trim());
+      schedulingURL.searchParams.set("a1", data.get("company").trim());
+      schedulingURL.searchParams.set("a2", data.get("website").trim());
+      schedulingURL.searchParams.set("a3", data.get("volume"));
+      schedulingURL.searchParams.set("a4", data.get("crm").trim());
+
+      // Calendly handles live availability, timezone selection,
+      // final submission, booking confirmation, and calendar invitations.
+      window.location.assign(schedulingURL.toString());
     });
   </script>
 </body>
